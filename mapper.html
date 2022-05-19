@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            #player{
+                width: 90%;
+                position: fixed;
+            }
+            #playtimer{
+                position: fixed;
+                top: 30px;
+                left: 96%;
+            }
+            #mapperpoint{
+                position: fixed;
+                top: 60px;
+                left: 90%;
+            }
+            html {
+  scroll-behavior: smooth;
+}
+        </style>
+    </head>
+    <body>
+        <audio src="Udaka.mp3" controls  id="player"></audio>
+        <b id="playtimer">0</b>
+        <b id="mapperpoint">():[0,0]</b>
+  
+        <object type="image/svg+xml" data="Udaka.svg">
+            <!-- Your fall back here -->
+            <img src="Udaka.svg" />
+        </object>
+        
+        <script src="jquery-3.6.0.min.js"></script>
+
+
+        <script>
+            var aux;
+            
+var arr=[];       
+aux=document.getElementById("player")
+aux.addEventListener("timeupdate", function() {
+document.getElementById("playtimer").innerHTML=aux.currentTime
+});
+
+window.addEventListener('keypress', function (evt){
+   //alert(evt.charCode)
+    if(evt.charCode==97||evt.charCode==65) 
+    {
+        v=document.getElementById("playtimer").innerHTML
+        arr.push([v,window.scrollY])
+     // gg=  document.getElementById("body")  
+   document.getElementById("mapperpoint").innerHTML ="("+arr.length+"):["+ arr[arr.length-1]+"]"
+
+    }
+}
+    );
+        </script>
+    </body>
+</html>
